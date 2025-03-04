@@ -2,6 +2,8 @@
 #VyOS config for routing protocol testing
 #set interfaces ethernet eth2 address dhcp
 #scp vyos@10.0.100.1:/home/vyos/conf.sh
+#https://raw.githubusercontent.com/xyrillo/helpers/refs/heads/main/vyos_routing.sh
+#vyos_routing.sh
 source /opt/vyatta/etc/functions/script-template
 
 #Prompts
@@ -39,11 +41,11 @@ set service dhcp-server hostfile-update
 #set service dhcp-server shared-network-name 'v100' option domain-name 'v.100'
 set service dhcp-server shared-network-name '$NETID' option name-server 192.168.1.53
 set service dhcp-server listen-address 10.0.$NETID.1
-set service dhcp-server shared-network-name 'NETID' authoritative
-set service dhcp-server shared-network-name 'NETID' subnet 10.0.$NETID.0/24 subnet-id 1
-set service dhcp-server shared-network-name 'NETID' subnet 10.0.$NETID.0/24 lease 86400
-set service dhcp-server shared-network-name 'NETID' subnet 10.0.$NETID.0/24 range 50 start 10.0.$NETID.2
-set service dhcp-server shared-network-name 'NETID' subnet 10.0.$NETID.0/24 range 50 stop 10.0.$NETID.50
+set service dhcp-server shared-network-name '$NETID' authoritative
+set service dhcp-server shared-network-name '$NETID' subnet 10.0.$NETID.0/24 subnet-id 1
+set service dhcp-server shared-network-name '$NETID' subnet 10.0.$NETID.0/24 lease 86400
+set service dhcp-server shared-network-name '$NETID' subnet 10.0.$NETID.0/24 range 50 start 10.0.$NETID.2
+set service dhcp-server shared-network-name '$NETID' subnet 10.0.$NETID.0/24 range 50 stop 10.0.$NETID.50
 
 #Enable SSHD
 set service ssh port 22
